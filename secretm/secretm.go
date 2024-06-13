@@ -12,7 +12,7 @@ import (
 
 func GetSecret(secretName string) (models.SecretRDSJson, error) {
 	var secretData models.SecretRDSJson
-	fmt.Println(" > getting secret: ", secretData)
+	fmt.Println(" > getting secretName: ", secretName)
 
 	svc := secretsmanager.NewFromConfig(awsgo.Cfg)
 	clave, err := svc.GetSecretValue(awsgo.Ctx, &secretsmanager.GetSecretValueInput{

@@ -20,18 +20,17 @@ func ReadSecret() error {
 }
 
 func DBConnect() error {
-	Db, errdb := sql.Open("mysql", ConStr(SecretModel))
-	if errdb != nil {
+	Db, err = sql.Open("mysql", ConStr(SecretModel))
+	if err != nil {
 		fmt.Println(fmt.Errorf("error opening db: %v", err))
 		return err
 	}
-	errdb = Db.Ping()
+	err = Db.Ping()
 
-	if errdb != nil {
+	if err != nil {
 		fmt.Println(fmt.Errorf("error ping on db: %v", err))
 		return err
 	}
-
 	fmt.Println("Connected to DB")
 	return nil
 }

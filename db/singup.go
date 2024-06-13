@@ -14,8 +14,10 @@ func SignUp(sig models.SignUp) error {
 		return err
 	}
 	defer Db.Close()
-
-	sentence := fmt.Sprintf("INSERT INTO users (User_Email, User_UUID, User_DateAdd) VALUES (%s, %s, %s)", sig.UserEmail, sig.UserUUID, tools.DateMysql())
+	// TODO: delete logs
+	fmt.Println("Before sentence: ", sig.UserEmail, sig.UserUUID)
+	sentence := fmt.Sprintf("INSERT INTO users (User_Email, User_UUID, User_DateAdd) VALUES ('%s','%s','%s')", sig.UserEmail, sig.UserUUID, tools.DateMysql())
+	fmt.Println("sentence: ", sentence)
 
 	_, errExec := Db.Exec(sentence)
 	if errExec != nil {

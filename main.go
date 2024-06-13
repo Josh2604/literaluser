@@ -37,6 +37,7 @@ func RunLambda(ctx context.Context, event events.CognitoEventUserPoolsPostConfir
 			fmt.Println("UUID: ", data.UserUUID)
 		}
 	}
+
 	err := db.ReadSecret()
 	if err != nil {
 		fmt.Println("Error on read secret: ", err)
